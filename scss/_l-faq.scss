@@ -1,3 +1,33 @@
 .faq {
-  
+  &__wrapper {
+
+  }
+
+  &__photo {
+    &-image {
+
+    }
+  }
+
+  &__content {
+
+  }
+
+  &__title {
+
+  }
+
+  &__item {
+    &-toggler {
+      &-question {
+
+      }
+    }
+
+    &-panel {
+      &-answer {
+        
+      }
+    }
+  }
 }
