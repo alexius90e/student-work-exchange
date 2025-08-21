@@ -1,2 +1,26 @@
 .footer {
+  &__wrapper {
+  }
+
+  &__contacts {
+    &-link {
+      &-icon {
+      }
+
+      &-text {
+      }
+    }
+  }
+
+  &__social {
+    &-link {
+      &-icon {
+      }
+    }
+  }
+
+  &__documents {
+    &-link {
+    }
+  }
 }
