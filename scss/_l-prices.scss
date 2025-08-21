@@ -1,3 +1,41 @@
 .prices {
-  
+  &__details {
+    &-title {
+    }
+
+    &-descripton {
+    }
+  }
+
+  &__main {
+    &-visible {
+    }
+
+    &-hidden {
+    }
+
+    &-card {
+      &-wrapper {
+      }
+
+      &-details {
+        &-title {
+          
+        }
+
+        &-info {
+          &-item {
+            &-title {
+            }
+
+            &-value {
+            }
+          }
+        }
+      }
+    }
+
+    &-more {
+    }
+  }
 }
