@@ -69,3 +69,47 @@ if (reviewsSwiperEl && reviewsPrevEl && reviewsNextEl && reviewsPaginationEl) {
     },
   });
 }
+
+const faqItemEls = document.querySelectorAll('.faq__item');
+
+function updateFaqItems() {
+  [...faqItemEls]
+    .filter((faqItemEl) => faqItemEl.classList.contains('active'))
+    .forEach((faqItemEl) => {
+      const panel = faqItemEl.querySelector('.faq__item-panel');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    });
+}
+
+updateFaqItems();
+
+window.addEventListener('resize', () => updateFaqItems());
+
+faqItemEls.forEach((faqItemEl) => {
+  faqItemEl.addEventListener('click', (event) => {
+    const isActive = event.currentTarget.classList.contains('active');
+    const isToggler = event.target.classList.contains('faq__item-toggler');
+
+    if (isToggler) {
+      const panel = event.currentTarget.querySelector('.faq__item-panel');
+
+      faqItemEls.forEach((faqItemEl) => {
+        const panel = faqItemEl.querySelector('.faq__item-panel');
+        if (faqItemEl !== event.currentTarget) {
+          faqItemEl.classList.remove('active');
+          panel.style.maxHeight = null;
+        }
+      });
+
+      if (panel) {
+        if (isActive) {
+          panel.style.maxHeight = null;
+          event.currentTarget.classList.remove('active');
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          event.currentTarget.classList.add('active');
+        }
+      }
+    }
+  });
+});
