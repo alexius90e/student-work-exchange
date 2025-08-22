@@ -1,6 +1,10 @@
 .header {
-  padding: 20px 0;
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 30px 0;
 
   &__wrapper {
     display: flex;
@@ -16,108 +20,35 @@
   }
 
   &__logo {
-    order: 0;
+    width: 120px;
 
     &-link {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+
       &-image {
         display: block;
         max-width: 100%;
-        width: 270px;
+        width: 100%;
         height: auto;
-
-        @include laptop {
-          width: 193px;
-        }
       }
     }
   }
 
-  &__website {
+  &__cabinet {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     flex: 0 0 auto;
 
     @include laptop {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex: 1 0 auto;
-      order: 1;
+      display: none;
     }
 
-    @include mobile {
-      flex: 1 1 100%;
-      order: 2;
-    }
-
-    &-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: fit-content;
-      padding: 10px 20px;
-      box-sizing: border-box;
-      font-family: 'Inter Tight', sans-serif;
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-      color: #004f30;
-      border: 1px solid #ffffff;
-      border-radius: 10px;
-      background-color: #ffffff;
-      transition-property: color, background-color;
-      transition-timing-function: ease-out;
-      transition-duration: 0.2s;
-      cursor: pointer;
-
-      @include mobile {
-        max-width: 540px;
-        width: 100%;
-        font-size: 15px;
-        color: #ffffff;
-        background-color: rgba($color: #ffffff, $alpha: 0);
-      }
-
-      &:hover {
-        color: #ffffff;
-        background-color: #004f30;
-
-        @include mobile {
-          color: #004f30;
-          background-color: #ffffff;
-        }
-      }
-
-      @include mobile {
-        max-width: 540px;
-        width: 100%;
-        font-size: 15px;
-        color: #ffffff;
-        background-color: rgba($color: #ffffff, $alpha: 0);
-      }
-
-      &::after {
-        content: '';
-        display: inline-block;
-        width: 20px;
-        aspect-ratio: 1 / 1;
-        background: url(../assets/arrow-half-right.svg) center / cover no-repeat;
-        transition-property: filter;
-        transition-timing-function: ease-out;
-        transition-duration: 0.2s;
-
-        @include mobile {
-          width: 18px;
-          filter: brightness(0%) invert(100%);
-        }
-      }
-
-      &:hover::after {
-        filter: brightness(0%) invert(100%);
-
-        @include mobile {
-          filter: brightness(100%) invert(0%);
-        }
-      }
+    &-button {
+      padding: 16px 32px;
     }
   }
 
@@ -140,19 +71,19 @@
       justify-content: center;
       width: 36px;
       padding: 0;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1;
       border: none;
       border-radius: 8px;
       outline: none;
-      background-color: #ffffff;
+      background-color: rgba($color: #000000, $alpha: 0);
       cursor: pointer;
 
       &::before {
         content: '';
         display: inline-block;
-        width: 20px;
+        width: 30px;
         aspect-ratio: 1 / 1;
-        background: url(../assets/menu.svg) center / cover no-repeat;
+        background: url(../assets/icons/menu.svg) center / cover no-repeat;
       }
     }
   }
@@ -176,15 +107,15 @@
       border: none;
       border-radius: 8px;
       outline: none;
-      background-color: #ffffff;
+      background-color: rgba($color: #ffffff, $alpha: 0);
       cursor: pointer;
 
       &::before {
         content: '';
         display: inline-block;
-        width: 20px;
+        width: 30px;
         aspect-ratio: 1 / 1;
-        background: url(../assets/close.svg) center / cover no-repeat;
+        background: url(../assets/icons/close.svg) center / cover no-repeat;
       }
     }
   }
@@ -195,29 +126,55 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 100;
+      bottom: 0;
+      z-index: 999;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       flex-wrap: wrap;
-      max-height: 100dvh;
-      gap: 0 20px;
-      padding: 20px 18px 24px;
+      padding: 0;
       box-sizing: border-box;
-      border-radius: 0 0 32px 32px;
-      background-color: #ffffff;
-      transform: translateY(-100dvh);
-      transition: transform ease-out 0.2s;
+      transition: background-color ease-in-out 0.4s;
+      pointer-events: none;
+      background-color: rgba($color: #000000, $alpha: 0);
     }
 
     &.active {
-      transform: translateY(0);
+      @include laptop {
+        pointer-events: all;
+        background-color: rgba($color: #000000, $alpha: 0.25);
+      }
+    }
+
+    &-wrapper {
+      @include laptop {
+        display: flex;
+        align-content: space-between;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        max-width: 360px;
+        height: 100%;
+        width: 100%;
+        padding: 30px 20px;
+        box-sizing: border-box;
+        background-color: #238ce2;
+        transform: translateX(400px);
+        transition: transform ease-in-out 0.4s;
+      }
+    }
+
+    &.active &-wrapper {
+      @include laptop {
+        transform: translateX(0);
+      }
     }
 
     &-menu {
       display: flex;
       align-items: center;
-      gap: 28px;
+      flex-wrap: wrap;
+      gap: 5px 30px;
       margin: 0;
       padding: 0;
       list-style-type: none;
@@ -230,20 +187,22 @@
       }
 
       &-item {
+        flex: 0 0 auto;
+
         &-link {
-          font-family: 'Inter Tight', sans-serif;
+          font-family: 'Jost', sans-serif;
           font-weight: 400;
-          font-size: 18px;
-          letter-spacing: -0.01em;
-          color: rgba(255, 255, 255, 0.8);
-          transition: opacity ease-out 0.2s;
+          font-size: 15px;
+          color: #fff;
+          transition: color ease-out 0.2s;
 
           @include laptop {
-            color: #161a18;
+            font-size: 20px;
+            text-align: center;
           }
 
           &:hover {
-            opacity: 0.5;
+            color: #ffb34a;
           }
         }
       }
@@ -260,7 +219,7 @@
     }
   }
 
-  &__nav &__website {
+  &__nav &__cabinet {
     display: none;
 
     @include laptop {
@@ -268,19 +227,12 @@
       align-items: center;
       justify-content: center;
       flex: 1 1 100%;
-      order: 2;
-      padding: 12px 0 24px;
+      order: 3;
     }
 
-    &-link {
+    &-button {
       max-width: 540px;
       width: 100%;
-      color: #ffffff;
-      background-color: #004f30;
-
-      &::after {
-        filter: brightness(0%) invert(100%);
-      }
     }
   }
 }
