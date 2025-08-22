@@ -12,9 +12,17 @@
   border: none;
   border-radius: 64px;
   outline: none;
-  background-color: #ffffff;
+  background-color: #ffb34a;
   transition-property: color, background-color;
   transition-timing-function: ease-out;
   transition-duration: 0.2s;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ffc87d;
+  }
+
+  &:active {
+    background-color: #ffa831;
+  }
 }
