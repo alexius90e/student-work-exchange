@@ -17,3 +17,21 @@ if (headerEl) {
     }
   });
 }
+
+const pricesMainEl = document.querySelector('.prices__main');
+
+if (pricesMainEl) {
+  pricesMainEl.addEventListener('click', (event) => {
+    const isMoreButton = event.target.classList.contains('prices__main-more-button');
+
+    if (isMoreButton) {
+      event.currentTarget.classList.add('active');
+
+      const pricesMainHiddenEl = document.querySelector('.prices__main-hidden');
+
+      if (pricesMainHiddenEl) {
+        pricesMainHiddenEl.style.maxHeight = pricesMainHiddenEl.scrollHeight + 'px';
+      }
+    }
+  });
+}
