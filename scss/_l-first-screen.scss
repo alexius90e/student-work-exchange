@@ -32,6 +32,12 @@
     width: 416px;
     aspect-ratio: 416 / 540;
     background: url(../assets/first-screen/first-screen-hat.png) top center / cover no-repeat;
+    pointer-events: none;
+
+    @include desktoplg {
+      bottom: -100px;
+      width: 320px;
+    }
 
     @include desktop {
       bottom: -70px;
@@ -131,7 +137,11 @@
         background-color: #ffb34a;
 
         &:hover {
-          background-color: #f69a19;
+          background-color: #ffc87d;
+        }
+
+        &:active {
+          background-color: #ffa831;
         }
       }
 
@@ -139,7 +149,11 @@
         background-color: #a5d5fc;
 
         &:hover {
-          background-color: #c6e5ff;
+          background-color: #d6ecfe;
+        }
+
+        &:active {
+          background-color: #8cc9fb;
         }
       }
     }
@@ -149,7 +163,7 @@
     position: absolute;
     top: 110px;
     left: 598px;
-    right: -20px;
+    right: -129px;
     bottom: 0;
     z-index: 10;
     display: flex;
@@ -172,6 +186,7 @@
       display: block;
       max-width: none;
       height: 100%;
+      width: 100%;
       aspect-ratio: 811 / 879;
       object-fit: cover;
 
