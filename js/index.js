@@ -37,3 +37,35 @@ if (pricesMainEl && pricesMainHiddenEl) {
     }
   });
 }
+
+const reviewsSwiperEl = document.querySelector('.reviews__slider .swiper');
+const reviewsPrevEl = document.querySelector('.reviews__slider-controls-prev');
+const reviewsNextEl = document.querySelector('.reviews__slider-controls-next');
+const reviewsPaginationEl = document.querySelector('.reviews__slider-controls-pagination');
+
+if (reviewsSwiperEl && reviewsPrevEl && reviewsNextEl && reviewsPaginationEl) {
+  const reviewsSwiper = new Swiper(reviewsSwiperEl, {
+    loop: true,
+    centeredSlides: true,
+    spaceBetween: 4,
+    slidesPerView: 1,
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      569: {
+        slidesPerView: 2,
+      },
+      1025: {
+        slidesPerView: 3,
+      },
+    },
+    pagination: {
+      el: reviewsPaginationEl,
+    },
+    navigation: {
+      nextEl: reviewsNextEl,
+      prevEl: reviewsPrevEl,
+    },
+  });
+}
