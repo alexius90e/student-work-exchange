@@ -19,19 +19,21 @@ if (headerEl) {
 }
 
 const pricesMainEl = document.querySelector('.prices__main');
+const pricesMainHiddenEl = document.querySelector('.prices__main-hidden');
 
-if (pricesMainEl) {
+if (pricesMainEl && pricesMainHiddenEl) {
   pricesMainEl.addEventListener('click', (event) => {
     const isMoreButton = event.target.classList.contains('prices__main-more-button');
 
     if (isMoreButton) {
       event.currentTarget.classList.add('active');
+      pricesMainHiddenEl.style.maxHeight = pricesMainHiddenEl.scrollHeight + 'px';
+    }
+  });
 
-      const pricesMainHiddenEl = document.querySelector('.prices__main-hidden');
-
-      if (pricesMainHiddenEl) {
-        pricesMainHiddenEl.style.maxHeight = pricesMainHiddenEl.scrollHeight + 'px';
-      }
+  window.addEventListener('resize', () => {
+    if (pricesMainEl.classList.contains('active')) {
+      pricesMainHiddenEl.style.maxHeight = pricesMainHiddenEl.scrollHeight + 'px';
     }
   });
 }

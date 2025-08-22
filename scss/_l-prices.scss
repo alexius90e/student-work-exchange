@@ -103,6 +103,10 @@
       }
     }
 
+    &.active &-hidden {
+      overflow: visible;
+    }
+
     &-card {
       display: block;
       flex: 1 1 100%;
